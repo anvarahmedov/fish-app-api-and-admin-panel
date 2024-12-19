@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('light');
             $table->bigInteger('oxygen');
             $table->bigInteger('temperature');
+            $table->float('ph')->default(0)->nullable();
             $table->timestamps();
         });
     }
