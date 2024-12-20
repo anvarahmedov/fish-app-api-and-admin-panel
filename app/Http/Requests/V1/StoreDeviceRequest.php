@@ -27,14 +27,15 @@ class StoreDeviceRequest extends FormRequest
             'city' => ['string', 'nullable'],
             'region' => ['string', 'nullable'],
             'country' => ['string', 'nullable'],
-            'latitude' => ['decimal:-90,max:90', 'nullable'],
-            'longtitude' => ['decimal:-180,max:180', 'nullable'],
+            'latitude' => ['decimal:min:-90,max:90', 'nullable'],
+            'longtitude' => ['decimal:min:-180,max:180', 'nullable'],
         ];
     }
 
     protected function prepareForValidation(){
         $this->merge([
-            'user_id' => $this->userId
+            'user_id' => $this->userId,
+            'device_name' => $this->deviceName
         ]);
     }
 }

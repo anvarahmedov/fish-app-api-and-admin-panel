@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class;
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

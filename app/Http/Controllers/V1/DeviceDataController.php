@@ -8,16 +8,23 @@ use App\Http\Requests\V1\UpdateDeviceDataRequest;
 use Illuminate\Http\Request;
 use App\Models\DeviceData;
 use App\Http\Resources\V1\DeviceDataResource;
+use App\Http\Collections\V1\DeviceDataCollection;
+use App\Filters\V1\DeviceDatasFilter;
 
 class DeviceDataController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $device_datas = DeviceData::all();
-        return DeviceDataResource::collection($device_datas);
+        $filter = new DeviceDatasFilter();
+        $filterItems = $filter->transform($request);
+
+       // $includeDeviceDatas = $request->query('includeDeviceDatas');
+
+        $device_datas = DeviceData::where($filterItems);
+        return new DeviceDataCollection($device_datas->paginate()->appends($request->query()));
     }
 
     /**
@@ -33,10 +40,11 @@ class DeviceDataController extends Controller
      */
     public function store(StoreDeviceDataRequest $request)
     {
-        $data = $request->validated();
-        $device_data = DeviceData::create($data);
+        //$data = $request->validated();
+      //  $device_data = DeviceData::create($data);
 
-        return DeviceDataResource::make($device_data);
+      return new DeviceDataResource(DeviceData::create($request->all()));
+
     }
 
     /**

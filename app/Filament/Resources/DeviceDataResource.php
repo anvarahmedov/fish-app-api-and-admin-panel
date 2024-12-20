@@ -39,6 +39,8 @@ class DeviceDataResource extends Resource
                         ->maxLength(255),
                         Forms\Components\TextInput::make('temperature')
                         ->required()
+                        ->maxLength(255),
+                        Forms\Components\TextInput::make('ph')
                         ->maxLength(255)]);
     }
 
@@ -54,6 +56,7 @@ class DeviceDataResource extends Resource
                 Tables\Columns\TextColumn::make('light')
                 ->searchable(),
                 Tables\Columns\TextColumn::make('temperature'),
+                Tables\Columns\TextColumn::make('ph'),
                 TextColumn::make('created_at')->sortable()->searchable(),
                 TextColumn::make('updated_at')->sortable()->searchable(),
 

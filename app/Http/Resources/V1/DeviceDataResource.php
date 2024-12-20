@@ -17,10 +17,11 @@ class DeviceDataResource extends JsonResource
     {
         return[
             'id' => $this->id,
-            'device_id' => $this->device_id,
+            'deviceId' => $this->device_id,
             'light' => $this->light,
             'oxygen' => $this->oxygen,
-            'temperature' => $this->temperature
+            'temperature' => $this->temperature,
+            'ph' => $this->ph
         ];
     }
 }

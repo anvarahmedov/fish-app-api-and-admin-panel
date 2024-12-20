@@ -25,7 +25,7 @@ class DeviceDataFactory extends Factory
             'light' => $this->faker->randomNumber(2, true),
             'oxygen' => $this->faker->randomNumber(2, true),
             'temperature' => $this->faker->randomNumber(2, true),
-
+            'ph' => $this->faker->randomFloat(2, 1, 100)
         ];
     }
 }

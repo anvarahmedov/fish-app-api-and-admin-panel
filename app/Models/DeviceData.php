@@ -11,11 +11,12 @@ class DeviceData extends Model
         'light',
         'oxygen',
         'temperature',
-        'device_id'
+        'device_id',
+        'ph'
     ];
     /** @use HasFactory<\Database\Factories\DeviceDataFactory> */
     use HasFactory;
     public function device() {
-        return $this->belongsTo(Device::class);
+        return $this->belongsTo(Device::class, 'device_id');
     }
 }

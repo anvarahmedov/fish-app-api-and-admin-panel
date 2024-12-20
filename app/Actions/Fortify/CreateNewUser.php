@@ -25,9 +25,9 @@ class CreateNewUser implements CreatesNewUsers
         $prefixPattern = implode('|', $allowedPrefixes);
         $regex = "/^($prefixPattern)/";
         Validator::make($input, [
-            'fullname' => ['string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:users'],
-            'address' => ['string', 'max:255'],
+            'fullname' => ['string', 'max:255', 'nullable'],
+            'email' => ['string', 'email', 'max:255', 'unique:users', 'nullable'],
+            'address' => ['string', 'max:255', 'nullable'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
             'phone_number' => ['required', 'string', 'max:9', 'min:9', 'regex:' . $regex],

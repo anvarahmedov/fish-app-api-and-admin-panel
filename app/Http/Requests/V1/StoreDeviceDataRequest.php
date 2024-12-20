@@ -3,6 +3,7 @@
 namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\FloatRule;
 
 class StoreDeviceDataRequest extends FormRequest
 {
@@ -22,11 +23,11 @@ class StoreDeviceDataRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'deviceId' => ['required', 'string'],
+            'deviceId' => ['required', 'integer'],
             'light' => ['required', 'integer'],
             'oxygen' => ['required', 'integer'],
             'temperature' => ['required', 'integer'],
-            'ph' => ['nullable', 'float']
+            'ph' => ['nullable', new FloatRule()]
         ];
     }
 
