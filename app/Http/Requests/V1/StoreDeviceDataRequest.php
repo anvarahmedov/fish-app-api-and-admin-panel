@@ -24,9 +24,9 @@ class StoreDeviceDataRequest extends FormRequest
     {
         return [
             'deviceId' => ['required', 'integer'],
-            'light' => ['required', 'integer'],
-            'oxygen' => ['required', 'integer'],
-            'temperature' => ['required', 'integer'],
+            'light' => ['required', new FloatRule()],
+            'oxygen' => ['required', new FloatRule()],
+            'temperature' => ['required', new FloatRule()],
             'ph' => ['nullable', new FloatRule()]
         ];
     }
