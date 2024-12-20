@@ -15,9 +15,9 @@ return new class extends Migration
         Schema::create('device_data', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Device::class);
-            $table->bigInteger('light');
-            $table->bigInteger('oxygen');
-            $table->bigInteger('temperature');
+            $table->float('light');
+            $table->float('oxygen');
+            $table->float('temperature');
             $table->float('ph')->default(0)->nullable();
             $table->timestamps();
         });

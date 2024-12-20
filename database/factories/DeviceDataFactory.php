@@ -22,9 +22,9 @@ class DeviceDataFactory extends Factory
       //  $faker = new Faker();
         return [
             'device_id' => Device::find(rand(1, Device::count()))->id,
-            'light' => $this->faker->randomNumber(2, true),
-            'oxygen' => $this->faker->randomNumber(2, true),
-            'temperature' => $this->faker->randomNumber(2, true),
+            'light' => $this->faker->randomFloat(2, 1, 100),
+            'oxygen' => $this->faker->randomFloat(2, 1, 100),
+            'temperature' => $this->faker->randomFloat(2, 1, 100),
             'ph' => $this->faker->randomFloat(2, 1, 100)
         ];
     }

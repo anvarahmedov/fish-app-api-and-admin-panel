@@ -22,11 +22,16 @@ class StoreUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $allowedPrefixes = [
+            '93', '94', '95', '97', '98', '90', '91', '98', '95', '99', '97', '33'
+            ];
+                $prefixPattern = implode('|', $allowedPrefixes);
+                $regex = "/^($prefixPattern)/";
         return [
             'fullname' => ['required', 'string'],
             'email' => ['required', 'email'],
             'address' => ['required', 'string'],
-            'phoneNumber' => ['required', 'string']
+            'phoneNumber' => ['required', 'string', 'max:9', 'min:9', 'regex:' . $regex]
         ];
     }
         protected function prepareForValidation(){
